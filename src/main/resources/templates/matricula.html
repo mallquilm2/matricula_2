@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Matriculas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>Matriculas</h1>
+        <div class="table-responsive">
+            <table class="table table-responsive table-sm table-dark table-striped table-bordered table-hover">
+                <thead>
+                    <th>Id Matricula</th>
+                    <th>Fecha</th>
+                    <th>Usuario</th>
+                    <th>Curso</th>
+                    <th>Estado</th>
+                </thead>
+                <tbody>
+                    <tr th:each="matricula:${listaMatricula}">
+                        <td th:text="${matricula.idmatricula}"></td>
+                        <td th:text="${#dates.format(matricula.fechaMat,'dd/MM/yyyy')}"></td>
+                        <td th:text="${matricula.usuario.nombreCompleto}"></td>
+                        <td th:text="${matricula.curso.nomCurso}"></td>
+                        <td th:text="${matricula.estado}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br/>
+        <div class="container">
+            <div class="row d-flex justify-content-center mx-auto">
+                <div class="col-md-6 col-xs-12 div-style">
+                    <form th:action="@{matriculaGrabar.do}" method="post">
+                        <div class="form-group">
+                            Fecha:<input type="date" name="fechaMat" class="form-control text-box">
+                        </div>
+                        <div class="form-group">
+                            Usuario: <select name="cmbUsuario" class="form-control text-box">
+                                        <option th:each="user:${listaUsuarios}" th:value="${user.usuario}" th:text="${user.nombreCompleto}"></option>
+                                    </select>
+                        </div>
+                        <div class="form-group">
+                            Curso: <select name="cmbCurso" class="form-control text-box">
+                                        <option th:each="curso:${listaCursos}" th:value="${curso.idCurso}" th:text="${curso.nomCurso}"></option>
+                                    </select>
+                        </div>
+                        <div class="form-group">
+                            Estado: <input type="radio" name="estado" value="0"/>Inscrito
+                            &nbs&nbsp;
+                            <input type="radio" name="estado" value="1"/>Pagado
+                        </div>
+                        <div class="form-group justify-content-center d-flex">
+                            <input type="submit" value="Insertar" class="btn btn-primary button-submit"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

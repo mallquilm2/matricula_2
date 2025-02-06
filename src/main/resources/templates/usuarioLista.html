@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <title>Mantenimiento de usuarios</title>
+    </head>
+    <body>
+        <h1>Listado de usuarios</h1>
+        <br/>
+        <div class="table-responsive">
+            <table class="table table-responsive table-sm table-dark tabled-striped table-bordered table-hover">
+                <thead>
+                    <tr class="info">
+                        <th><a th:href="@{usuarioListar.do(pag=0, orden=usuario)}">Usuario</a></th>
+                        <th><a th:href="@{usuarioListar.do(pag=0, orden=clave)}">Clave</a></th>
+                        <th><a th:href="@{usuarioListar.do(pag=0, orden=nombreCompleto)}">Nombre Completo</a></th>
+                        <th>Foto</th>
+                        <th colspan="2">Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user :${lista}">
+                    <td th:text="${user.usuario}"></td>
+                    <td th:text="${user.clave}"></td>
+                    <td th:text="${user.nombreCompleto}"></td>
+                    <td><a th:href="@{'fotoMostrar.do?codigoUsuario=' + ${user.usuario}}">foto</a></td>
+                    <td><a th:href="@{'usuarioEli.do?codigoUsuario=' + ${user.usuario}}">Eliminar</a></td>
+                    <td><a th:href="@{'usuarioMod.do?codigoUsuario=' + ${user.usuario}}">Editar</a></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+            <br/>
+            <a th:href="@{usuarioListar.do(pag=0, orden=${param.orden})}" th:text="|Primera pagina|">1</a>
+            <a th:href="@{usuarioListar.do(pag=1, orden=${param.orden})}" th:text="|Segunda pagina|">2</a>
+            <br/>
+            <a th:href="@{'usuarioCrear.do'}" class="btn btn-primary bt-lg active">Crear Usuario</a>
+    </body>
+</html>

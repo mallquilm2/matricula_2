@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Foto usuario</title>
+    </head>
+    <body>
+        <h1>Foto Usuario</h1>
+        <img th:src="@{'data:image/jpeg;base64,'+${foto64}}" th:if="${usuario.foto}"/>
+        <h2 th:unless="${usuario.foto}" th:text="'Usuario aun sin foto'"></h2>
+    </body>
+</html>
