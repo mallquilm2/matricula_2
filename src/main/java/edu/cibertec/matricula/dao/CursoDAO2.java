@@ -1,19 +1,21 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ */
 package edu.cibertec.matricula.dao;
 
 import edu.cibertec.matricula.dao.entity.CursoEntity;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
-/**
- *
- * @author miguel
- */
 @Repository
-public abstract class CursoDAOImpl implements CursoDAO {
+public interface CursoDAO2 extends JpaRepository<CursoEntity, Integer>{
     
+    /*
     public RestTemplate restTemplate;
     
     @Value("${uri.rest.cursos}")
@@ -45,4 +47,5 @@ public abstract class CursoDAOImpl implements CursoDAO {
     public void eliminar(int codigo){
         restTemplate.delete(urlServidor+"/"+codigo);
     }
+*/
 }

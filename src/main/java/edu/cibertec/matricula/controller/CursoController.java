@@ -1,7 +1,6 @@
 
 package edu.cibertec.matricula.controller;
 
-import edu.cibertec.matricula.dao.CursoDAOImpl;
 import edu.cibertec.matricula.dao.entity.CursoEntity;
 import edu.cibertec.matricula.service.CursoService;
 import jakarta.servlet.http.HttpServletRequest;
