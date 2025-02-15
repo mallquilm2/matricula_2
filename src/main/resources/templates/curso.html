@@ -38,7 +38,7 @@
                         <td th:text="${curso.alumnosAct}"></td>
                         <td th:text="${curso.estado}"></td>
                         <td>
-                            <a th:href="@{|cursoEliminar?codigo=|+${curso.idCurso}}"/>
+                            <a th:href="@{|cursoEliminar?codigo=|+${curso.idCurso}}" th:text="|SI|"/>
                         </td>
                     </tr>
                 </tbody>
@@ -51,13 +51,16 @@
                 <form th:action="@{/cursoGrabar}" th:object="${cursoBean}" method="post">
                     <div class="form-group">
                         <input type="text" th:field="*{nomCurso}" class="form-control" placeholder="Nombre curso">
-                        <p th:if="${#fields.hasErrors('nomCurso'}" th:errorclass="formFieldError" th:errors="*{nomCurso}"></p>
+                        <p th:if="${#fields.hasErrors('nomCurso')}" th:errorclass="formFieldError" th:errors="*{nomCurso}"></p>
                     </div>
                     <div class="form-group">
                         <input type="date" th:field="*{fechaInicio}" class="form-control text-box" placeholder="Fecha Inicio"/>
                     </div>
                     <div class="form-group">
                         <input type="number" th:field="*{alumnosMin}" class="form-control text-box" placeholder="Minimo de alumnos" />
+                    </div>
+                    <div class="form-group">
+                        <input type="number" th:field="*{alumnosAct}" class="form-control text-box" placeholder="Alumnos inscritos" />
                     </div>
                     <div class="form-group">
                         <select th:field="*{estado}" class="form-control text-box">

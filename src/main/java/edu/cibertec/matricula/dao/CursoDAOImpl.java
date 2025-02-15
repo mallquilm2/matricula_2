@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
  * @author miguel
  */
 @Repository
-public abstract class CursoDAOImpl implements CursoDAO {
+public class CursoDAOImpl {
     
     public RestTemplate restTemplate;
     
