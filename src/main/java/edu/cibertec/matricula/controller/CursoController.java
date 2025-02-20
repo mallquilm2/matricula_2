@@ -25,8 +25,8 @@ public class CursoController {
     @RequestMapping("")
     public String login(){
         System.out.println("");
-        logger.info("Mostrando Login View");
-        return "login";
+        logger.info("Mostrando menu View");
+        return "menu";
     }
     
     @RequestMapping("cursoMostrar.do")
