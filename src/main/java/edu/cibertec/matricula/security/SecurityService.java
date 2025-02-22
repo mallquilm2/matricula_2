@@ -24,8 +24,8 @@ public class SecurityService implements UserDetailsService{
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UsuarioEntity ue = usuarioDAO.findById(username).get();
         List<GrantedAuthority> roles = new ArrayList<>();
-        roles.add(new SimpleGrantedAuthority("ADMIN"));
-        UserDetails udet = new User(ue.getUsuario(),"{noop}"+ ue.getClave(), roles);
+        roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        UserDetails udet = new User(ue.getUsuario(),ue.getClave(), roles);
         return udet;
     }
     
