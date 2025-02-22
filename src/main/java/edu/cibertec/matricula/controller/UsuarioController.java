@@ -31,6 +31,11 @@ public class UsuarioController {
     public String loginMostrar() {
         return "login";
     }
+    
+    @RequestMapping("/menu")
+    public String menuMostrar(){
+        return "menu";
+    }
 
     @RequestMapping("loginAccion.do")
     public ModelAndView loginAccion(UsuarioEntity usuarioValida) {

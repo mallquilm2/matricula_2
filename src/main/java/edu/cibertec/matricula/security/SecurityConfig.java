@@ -42,7 +42,13 @@ public class SecurityConfig {
                 .requestMatchers("/usuarioCrear.do").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin();
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .failureUrl("/login?msgError=true")
+                .usernameParameter("usuario")
+                .passwordParameter("clave")
+                .defaultSuccessUrl("/menu",true);
                 return http.build();
     }
     

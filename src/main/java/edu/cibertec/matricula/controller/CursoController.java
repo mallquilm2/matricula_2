@@ -22,11 +22,11 @@ public class CursoController {
     
     Logger logger = LoggerFactory.getLogger(CursoController.class);
     
-    @RequestMapping("")
+    @RequestMapping("/login")
     public String login(){
         System.out.println("");
-        logger.info("Mostrando menu View");
-        return "menu";
+        logger.info("Mostrando login View");
+        return "login";
     }
     
     @RequestMapping("cursoMostrar.do")
